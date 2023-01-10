@@ -8,7 +8,6 @@ RUN dpkg --add-architecture i386 && \
 
 RUN mkdir /opt/linbpq
 WORKDIR /opt/linbpq
-ADD start.sh /opt/linbpq
 
 # Add the linbpq file
 ADD https://www.cantab.net/users/john.wiseman/Downloads/linbpq /opt/linbpq
@@ -26,7 +25,5 @@ RUN cd BPQAPRS; wget http://www.cantab.net/users/john.wiseman/Documents/Samples/
 ADD overwrite/allrf.html /opt/linbpq/BPQAPRS/HTML/allrf.html
 
 RUN chmod +x linbpq
-#CMD ["./linbpq"]
 
 ENTRYPOINT ["./linbpq"]
-#ENTRYPOINT ./start.sh
