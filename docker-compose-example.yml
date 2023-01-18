@@ -1,11 +1,12 @@
 version: "3"
 services:
   linbpq:
-    image: marrold/marrold/vpe-bpq-x86_64
+    image: marrold/vpe-bpq-x86_64
     restart: always
     network_mode: "host"
     volumes:
       - ./bpq32.cfg:/opt/linbpq/bpq32.cfg
       - ./chatconfig.cfg:/opt/linbpq/chatconfig.cfg
       - ./BPQNODES.dat:/opt/linbpq/BPQNODES.dat
+      - ./socat.cfg:/opt/linbpq/socat.cfg
       - ./logs:/opt/linbpq/logs
