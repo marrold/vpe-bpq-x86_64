@@ -1,10 +1,11 @@
 #!/bin/bash
 
+cd /opt/linbpq
+
 if [ ! -f "socat.cfg" ]; then
   echo "socat.cfg doesn't exist, skipping"
   exit
 fi
-
 
 socat_instances=()
 

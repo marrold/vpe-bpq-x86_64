@@ -1,3 +1,3 @@
 #!/usr/bin/dumb-init /bin/sh
 
-./socat.sh && ./linbpq
+./bootstrap.sh && ./socat.sh && cd /opt/linbpq && ./linbpq
