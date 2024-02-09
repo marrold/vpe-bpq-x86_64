@@ -341,6 +341,15 @@ EOF
 
 }
 
+current_date=$(date)
+
+echo "#################"
+echo "# BOOTSTRAPPING #"
+echo "#################"
+echo ""
+echo "=== $current_date ==="
+echo ""
+
 if [[ ! -d "/opt/linbpq" ]]; then
   while true; do
     echo "Directory /opt/linbq does not exist. Please mount it"
@@ -348,7 +357,7 @@ if [[ ! -d "/opt/linbpq" ]]; then
   done
 else
   echo "Copying linbpq base files to mounted volume"
-  rsync -av --exclude '*.sh' /opt/linbpq-base/ /opt/linbpq/
+  rsync -av --itemize-changes --exclude '*.sh' /opt/linbpq-base/ /opt/linbpq/
 fi
 
 if [ ! -f "/opt/linbpq/BPQNODES.dat" ]; then
@@ -356,7 +365,7 @@ if [ ! -f "/opt/linbpq/BPQNODES.dat" ]; then
   touch /opt/linbpq/BPQNODES.dat
 fi
 
-if [ ! -f "linmail.cfg" ]; then
+if [ ! -f "/opt/linbpq/linmail.cfg" ]; then
   echo "linmail.cfg doesn't exist creating a new one"
   generate_linmail_config
 fi

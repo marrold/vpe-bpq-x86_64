@@ -14,7 +14,7 @@ RUN dpkg -i dumb-init_*.deb && \
 
 # Add the linbpq file
 ADD https://www.cantab.net/users/john.wiseman/Downloads/Beta/linbpq /opt/linbpq-base
-RUN chmod +x /opt/linbpq-base
+RUN chmod +x /opt/linbpq-base/linbpq
 
 # Add the HTML pages
 RUN mkdir /opt/linbpq-base/HTML
@@ -27,12 +27,9 @@ RUN cd BPQAPRS; wget http://www.cantab.net/users/john.wiseman/Documents/Samples/
 # allrf parsing has a buffer size bug. We're overloading the one that comes from John
 ADD overwrite/allrf.html /opt/linbpq-base/BPQAPRS/HTML/allrf.html
 
-RUN chmod +x linbpq
-
 ADD start.sh /opt/linbpq-base/
 ADD socat.sh /opt/linbpq-base/
 ADD bootstrap.sh /opt/linbpq-base/
-
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/opt/linbpq-base/start.sh"]
